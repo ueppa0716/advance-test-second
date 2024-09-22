@@ -1,0 +1,171 @@
+/* ヘッダー */
+.header {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    background-color: black;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 60px 1fr;
+}
+
+.header__heading {
+    width: 75%;
+    grid-column: 1/4;
+    justify-self: center;
+    align-self: center;
+}
+
+img {
+    width: 100%;
+}
+
+.header_btn {
+    display: inline-block;
+    font-size: 18px;
+    padding: 3px 12px 3px 12px;
+    background-color: rgb(48, 93, 255);
+    color: white;
+    border-radius: 4px;
+}
+
+.header__link-li {}
+
+.header__link-text {
+    color: white;
+    font-size: 1.5vw;
+    background-color: black;
+    border: none;
+}
+
+.header__link-btn {
+    color: black;
+    border: none;
+    background-color: white;
+    font-size: 1.5vw;
+    text-decoration: none;
+    padding: 3px 12px 3px 12px;
+    border-radius: 3px;
+}
+
+.header__link-nav--first {
+    text-decoration: none;
+    color: white;
+    grid-column: 7/8;
+    justify-self: center;
+    align-self: center;
+}
+
+.header__link-nav--second {
+    text-decoration: none;
+    color: white;
+    grid-column: 8/9;
+    justify-self: center;
+    align-self: center;
+}
+
+.header__link-nav--third {
+    grid-column: 9/10;
+    justify-self: center;
+    align-self: center;
+}
+
+.header__link-text {
+    text-decoration: none;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.message {
+    color: blue;
+    font-size: 1.5vw;
+}
+
+@media (max-width: 768px) {}
+
+/* フッター */
+.footer {
+    text-align: center;
+    vertical-align: middle;
+    height: 60px;
+    font-size: 14px;
+    background: #FFF;
+}
+
+/* コンテンツ */
+.content {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    background-color: white;
+}
+
+.content__heading {
+    margin: 50px 0 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: serif;
+}
+
+/* ページネーション */
+.page_top {
+    background-color: rgb(242, 242, 242);
+    padding-top: 40px;
+}
+
+.page_txt {
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.page_txt--deco {
+    border: 1px solid rgb(35, 132, 207);
+    color: rgb(35, 132, 207);
+    background-color: white;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.page_bottom {
+    background-color: rgb(242, 242, 242);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0px auto 70px;
+}
+
+.pagination li:not(.active) {
+    border: 1px solid #E0DFDE;
+    padding: 4px 12px;
+}
+
+.pagination li:not(:last-child) {
+    border-right: none;
+}
+
+.pagination a {
+    color: rgb(35, 132, 207);
+    text-decoration: none;
+}
+
+.pagination__link {
+    text-decoration: none;
+}
+
+.active {
+    padding: 4px 12px;
+    border: 1px solid rgb(242, 242, 242);
+    background-color: rgb(35, 132, 207);
+    color: white;
+}

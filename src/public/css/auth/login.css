@@ -1,0 +1,89 @@
+.content {
+    padding: 30px;
+}
+
+.login-form__inner {
+    display: block;
+    margin-top: 48px;
+}
+
+.login-form__form {
+    width: 40vw;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+    .login-form__form {
+        width: 60vw;
+    }
+}
+
+.login-form__group {
+    margin-bottom: 32px;
+}
+
+.login-form__heading {
+    text-align: center;
+    font-size: 25px;
+}
+
+.login-form__label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-form__input {
+    display: block;
+    padding: 8px 12px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    color: black;
+    font-family: serif;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(242, 242, 242);
+}
+
+.login-form__text {
+    margin: 0;
+    font-weight: bold;
+}
+
+.login-form__error-message {
+    color: #FF9494;
+    margin: 0;
+}
+
+.login-form__btn {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgb(255, 85, 85);
+    color: white;
+    height: 48px;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.login-form__nav {
+    text-align: center;
+    color: rgb(33, 75, 224);
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.login-form__nav-link {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .login-form {
+        width: 70vw;
+    }
+
+    .login-form__btn {
+        width: 10vw;
+        font-size: 2.0vw;
+    }
+}
