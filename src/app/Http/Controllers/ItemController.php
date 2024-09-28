@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Condition;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -21,7 +22,6 @@ class ItemController extends Controller
         $categories = Category::all();
 
         $itemInfos = $query->with(['condition', 'category'])->get();
-
 
         $query = $this->getSearchQuery($request, $query);
         $itemInfos = $query->with(['condition', 'category'])->get();
@@ -52,6 +52,40 @@ class ItemController extends Controller
 
         $itemInfo = Item::find($item_id);
 
-        return view('detail', compact('user', 'itemInfo'));
+        $userLikes = collect();
+
+        if (!empty($user)) {
+            $userLikes = Like::where('user_id', $user->id)->get();
+        }
+
+        $itemInfo->liked = $userLikes->contains('item_id', $itemInfo->id);
+
+        $likeCount = Like::where('item_id', $item_id)->count();
+
+        $commentCount = Comment::where('item_id', $item_id)->count();
+
+        return view('detail', compact('user', 'itemInfo', 'likeCount', 'commentCount'));
+    }
+
+    public function mylist(Request $request)
+    {
+        $user = Auth::user();
+
+        $conditions = Condition::all();
+        $categories = Category::all();
+
+        if (!empty($user)) {
+            $likedItemIds = Like::where('user_id', $user->id)->pluck('item_id');
+
+            $query = Item::whereIn('items.id', $likedItemIds);
+
+            $query = $this->getSearchQuery($request, $query);
+
+            $itemInfos = $query->with(['condition', 'category'])->get();
+        } else {
+            $itemInfos = collect();
+        }
+
+        return view('mylist', compact('user', 'itemInfos', 'conditions', 'categories'));
     }
 }
