@@ -1,0 +1,98 @@
+.detail-group {
+    padding: 0 6%;
+    display: flex;
+    width: 100%;
+    margin-top: 75px;
+}
+
+.detail-group-img {
+    width: 60%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-item-img {
+    width: 75%;
+    height: auto;
+    object-fit: cover;
+}
+
+.detail-group-item {
+    height: fit-content;
+    width: 40%;
+}
+
+.detail-item__title {
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 0;
+}
+
+.detail-item__name {
+    margin: 0 0 10px 0;
+    font-size: 1.5vw;
+}
+
+.detail-item__price {
+    margin: 10px 0 10px 0;
+    font-size: 1.5vw;
+}
+
+.detail-group__user {
+    display: flex;
+    margin: 10px 0 10px 0;
+    align-items: center;
+}
+
+.count-like {
+    margin: 0 0 0 12px;
+}
+
+.count-comment {
+    margin: 0 0 0 12px;
+}
+
+.img-like {
+    width: 35%;
+    background-color: white;
+    border: none;
+    padding: 0;
+}
+
+.img-comment {
+    width: 35%;
+}
+
+.detail-comment-btn {
+    width: 50%;
+    margin: 10px 0 30px 0;
+    padding: 5px;
+    background-color: rgb(255, 85, 85);
+    color: white;
+    border: 0;
+    font-size: 1.5vw;
+}
+
+.detail-item__comment-area {
+    font-size: 1.0vw;
+    width: 100%;
+}
+
+.detail-item-text {
+    font-size: 1.0vw;
+    font-weight: bold;
+    margin: 0 25px 25px 0;
+}
+
+.error-message {
+    color: red;
+}
+
+.error-message__text {
+    font-size: 1.2vw;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {}

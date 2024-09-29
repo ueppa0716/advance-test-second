@@ -40,11 +40,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
     Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'address']);
-    Route::post('/purchase/{item_id}/complete', [PurchaseController::class, 'complete']);
+    Route::post('/purchase/complete/{item_id}', [PurchaseController::class, 'complete']);
 
     Route::post('/sell', [SellController::class, 'sell']);
 
-    Route::post('/item/{item_id}/like', [LikeController::class, 'like']);
+    Route::post('/item/like/{item_id}', [LikeController::class, 'like']);
 
     Route::get('/comment/{item_id}', [CommentController::class, 'comment']);
     Route::post('/comment/update', [CommentController::class, 'update']);

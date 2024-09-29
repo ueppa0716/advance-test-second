@@ -65,6 +65,7 @@
     align-items: center;
     overflow: hidden;
     margin: 0;
+    position: relative;
 }
 
 .item-img {
@@ -72,6 +73,9 @@
     height: 180px;
     object-fit: cover;
     background-color: rgb(217, 217, 217);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .detail-btn {
@@ -85,4 +89,18 @@
     font-size: 1vw;
     border: none;
     white-space: nowrap;
+}
+
+.item-group__info {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.item-group-text {
+    font-size: 0.7vw;
 }
