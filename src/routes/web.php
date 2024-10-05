@@ -35,19 +35,23 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mylist', [ItemController::class, 'mylist']);
 
-    Route::get('/mypage', [UserController::class, 'mypage']);
-    Route::post('/mypage/profile', [UserController::class, 'profile']);
+    Route::get('/mypage/sell', [UserController::class, 'mypageSell']);
+    Route::get('/mypage/purchase', [UserController::class, 'mypagePurchase']);
+    Route::get('/mypage/profile', [UserController::class, 'profile']);
+    Route::post('/mypage/profile/update', [UserController::class, 'update']);
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
     Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'address']);
     Route::post('/purchase/complete/{item_id}', [PurchaseController::class, 'complete']);
 
-    Route::post('/sell', [SellController::class, 'sell']);
+    Route::get('/sell', [SellController::class, 'sell']);
+    Route::post('/sell/update', [SellController::class, 'update']);
 
     Route::post('/item/like/{item_id}', [LikeController::class, 'like']);
 
     Route::get('/comment/{item_id}', [CommentController::class, 'comment']);
     Route::post('/comment/update', [CommentController::class, 'update']);
+    Route::post('/comment/delete', [CommentController::class, 'delete']);
 
     Route::get('/profile', function () {
         // 確認済みのユーザーのみがこのルートにアクセス可能

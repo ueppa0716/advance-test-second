@@ -1,0 +1,167 @@
+.search-form {
+    width: 100%;
+    grid-column: 4/7;
+    justify-self: center;
+    align-self: center;
+}
+
+.search-form__keyword {
+    width: 28vw;
+    height: 35px;
+}
+
+.search-form-btn {
+    width: 4vw;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+.profile-form {
+    margin-bottom: 50px;
+}
+
+.profile-form__heading{
+    margin: 50px 0 0 0;
+}
+
+.profile-form__inner {
+    display: block;
+    margin-top: 48px;
+}
+
+.profile-form__form {
+    width: 40vw;
+    border-radius: 8px;
+}
+
+.profile__info {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin: 0 0 25px 0;
+}
+
+.profile__info-img {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(217, 217, 217);
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__btn {
+    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+    font-size: 1.2vw;
+    text-align: center;
+    border-radius: 8px;
+    background-color: white;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.profile__btn input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+    
+.custom-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+@media screen and (max-width: 1200px) {
+    .profile-form__form {
+        width: 60vw;
+    }
+}
+
+.profile-form__group {
+    margin-bottom: 32px;
+}
+
+.profile-form__heading {
+    text-align: center;
+    font-size: 25px;
+}
+
+.profile-form__label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.profile-form__input {
+    display: block;
+    padding: 8px 12px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    color: black;
+    font-family: serif;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.profile-form__text {
+    margin: 0;
+    font-weight: bold;
+}
+
+.profile-form__error-message {
+    color: #FF9494;
+    margin: 0;
+}
+
+.profile__update__success-message {
+    color: blue;
+    margin: 0;
+}
+
+.profile-form__btn {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgb(255, 85, 85);
+    color: white;
+    height: 48px;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.profile-form__nav {
+    text-align: center;
+    color: rgb(33, 75, 224);
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.profile-form__nav-link {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .profile-form {
+        width: 70vw;
+    }
+
+    .profile-form__btn {
+        width: 10vw;
+        font-size: 2.0vw;
+    }
+}

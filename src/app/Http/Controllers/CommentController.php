@@ -48,4 +48,10 @@ class CommentController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function delete(Request $request)
+    {
+        Comment::where('id', $request->comment_id)->delete();
+        return redirect()->back();
+    }
 }
