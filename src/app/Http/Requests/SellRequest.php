@@ -26,8 +26,8 @@ class SellRequest extends FormRequest
         return [
             'name' => 'required|string|max:191',
             'detail' => 'required|string|max:191',
-            'category_id' => 'required',
-            'condition_id' => 'required',
+            'category' => 'required',
+            'condition' => 'required',
             'price' => 'numeric|required',
             'photo' => 'required',
         ];
@@ -42,8 +42,8 @@ class SellRequest extends FormRequest
             'detail.required' => '商品説明を入力してください',
             'detail.string' => '商品説明を文字列で入力してください',
             'detail.max' => '商品説明を191文字以下で入力してください',
-            'category_id.required' => 'カテゴリーを選択してください',
-            'condition_id.required' => '商品状態を選択してください',
+            'category.required' => 'カテゴリーを選択してください',
+            'condition.required' => '商品状態を選択してください',
             'price.numeric' => '価格は数値で入力してください。',
             'price.required' => '価格を入力してください',
             'photo.required' => '写真を選択してください',

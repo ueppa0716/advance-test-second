@@ -84,13 +84,21 @@
 }
 
 .detail-purchase-btn {
-    width: 50%;
+    width: 60%;
     margin: 10px 0 30px 0;
     padding: 5px;
     background-color: rgb(255, 85, 85);
     color: white;
     border: 0;
     font-size: 1.5vw;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+}
+
+.detail-purchase__text {
+    color: white;
+    text-decoration: none;
 }
 
 .detail-item__detail {
@@ -122,5 +130,4 @@
 }
 
 /* レスポンシブデザイン */
-@media (max-width: 768px) {
-}
+@media (max-width: 768px) {}

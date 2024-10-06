@@ -25,17 +25,13 @@ class CommentController extends Controller
         }
         $itemInfo->liked = $userLikes->contains('item_id', $itemInfo->id);
 
-        $otherCommentInfos = Comment::where('item_id', $itemInfo->id)
-            ->where('user_id', '!=', $user->id)
-            ->get();
-        $myCommentInfos = Comment::where('item_id', $itemInfo->id)
-            ->where('user_id', $user->id)
+        $commentInfos = Comment::where('item_id', $itemInfo->id)
             ->get();
 
         $likeCount = Like::where('item_id', $item_id)->count();
         $commentCount = Comment::where('item_id', $item_id)->count();
 
-        return view('comment', compact('user', 'itemInfo', 'likeCount', 'commentCount', 'otherCommentInfos', 'myCommentInfos'));
+        return view('comment', compact('user', 'itemInfo', 'likeCount', 'commentCount', 'commentInfos'));
     }
 
     public function update(CommentRequest $request)

@@ -20,8 +20,13 @@
     margin-bottom: 50px;
 }
 
-.profile-form__heading{
+.profile-form__heading {
     margin: 50px 0 0 0;
+}
+
+.profile-form__heading__text {
+    text-align: center;
+    margin: 0;
 }
 
 .profile-form__inner {
@@ -45,7 +50,7 @@
     width: 100px;
     height: 100px;
     background-color: rgb(217, 217, 217);
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 50%;
     margin-right: 50px;
     display: flex;
@@ -66,16 +71,16 @@
     display: inline-block;
 }
 
-.profile__btn input[type="file"] {
-    opacity: 0;
+/* .profile__btn input[type="file"] {
+    opacity: 1;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     cursor: pointer;
-}
-    
+} */
+
 .custom-button {
     background-color: #007bff;
     color: white;

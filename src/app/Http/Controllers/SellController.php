@@ -19,47 +19,48 @@ class SellController extends Controller
     {
         $user = Auth::user();
 
-        return view('sell', compact('user'));
+        $conditions = Condition::all();
+        $categories = Category::all();
+
+        return view('sell', compact('user', 'conditions', 'categories'));
     }
 
     public function update(SellRequest $request)
     {
-        $user = User::where('id', $request->user_id)->first();
-
-        // 現在の画像を削除するためのURLを保存
-        $oldPhoto = $user->photo;
-
+        // 画像ファイルを取得
         $file = $request->file('photo');
 
         if ($file) {
             // ファイル名を生成
             $filename = time() . '.' . $file->getClientOriginalExtension();
 
-            // ストレージに新しい画像を保存
+            // ストレージに保存
             $path = $file->storeAs('images', $filename, 'public');
 
             // 保存先のURLを取得
             $url = Storage::url($path);
-
-            // 古い画像が存在する場合は削除
-            if ($oldPhoto) {
-                // `public`ディスクのURLをパスに変換して削除
-                Storage::disk('public')->delete(str_replace('/storage/', '', $oldPhoto));
-            }
-
-            // 新しい画像のURLを設定
-            $user->photo = $url;
+        } else {
+            $url = null; // 画像がアップロードされていない場合の処理
         }
 
-        // ユーザー情報を更新
-        $user->update([
-            'name' => $request->input('name') ?? $user->name,
-            'post_code' => $request->input('post_code') ?? $user->post_code,
-            'address' => $request->input('address') ?? $user->address,
-            'building' => $request->input('building') ?? $user->building,
-            'photo' => $user->photo,
+        $data = $request->only([
+            'name',
+            'condition',
+            'category',
+            'user_id',
+            'detail',
+            'price',
+        ]);
+        Item::create([
+            'name' => $data['name'],
+            'condition_id' => $data['condition'],
+            'category_id' => $data['category'],
+            'user_id' => $data['user_id'],
+            'detail' => $data['detail'],
+            'price' => $data['price'],
+            'photo' => $url, // 画像のURLを保存
         ]);
 
-        return redirect()->back()->with('success', 'ユーザー情報の更新が完了しました');
+        return redirect()->back()->with('success', '商品情報の登録が完了しました');
     }
 }
