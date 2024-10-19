@@ -13,7 +13,7 @@ class PurchaseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'post_code' => 'numeric|digits:7',
+            'address' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'post_code.numeric' => '郵便番号は数値で入力してください。',
+            'post_code.digits' => '郵便番号はハイフン抜き7桁で入力してください。',
+            'address.required' => '住所を入力してください',
         ];
     }
 }

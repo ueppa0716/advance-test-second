@@ -1,0 +1,115 @@
+.content {
+    padding: 30px;
+}
+
+.search-form {
+    width: 100%;
+    grid-column: 4/7;
+    justify-self: center;
+    align-self: center;
+}
+
+.search-form__keyword {
+    width: 28vw;
+    height: 35px;
+}
+
+.search-form-btn {
+    width: 4vw;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+.address-form__inner {
+    display: block;
+    margin-top: 48px;
+}
+
+.address-form__form {
+    width: 40vw;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+    .address-form__form {
+        width: 60vw;
+    }
+}
+
+.address-form__group {
+    margin-bottom: 32px;
+}
+
+.address-form__heading {
+    text-align: center;
+    font-size: 25px;
+}
+
+.address-form__label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.address-form__input {
+    display: block;
+    padding: 8px 12px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    color: black;
+    font-family: serif;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.address-form__text {
+    margin: 0;
+    font-weight: bold;
+}
+
+.address-form__error-message {
+    color: #FF9494;
+    margin: 0;
+}
+
+.address-form__btn {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgb(255, 85, 85);
+    color: white;
+    height: 48px;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.address-form__nav {
+    text-align: center;
+    color: rgb(33, 75, 224);
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.address-form__nav-link {
+    text-decoration: none;
+}
+
+.error-message {
+    color: red;
+}
+
+.error-message__text {
+    font-size: 1.2vw;
+}
+
+@media (max-width: 768px) {
+    .address-form {
+        width: 70vw;
+    }
+
+    .address-form__btn {
+        width: 10vw;
+        font-size: 2.0vw;
+    }
+}

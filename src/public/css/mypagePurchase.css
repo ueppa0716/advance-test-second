@@ -154,3 +154,13 @@
 .item-group-text {
     font-size: 0.7vw;
 }
+
+.profile__update__success-message {
+    color: blue;
+    margin: 50px;
+}
+
+.profile__update__error-message {
+    color: red;
+    margin: 50px;
+}

@@ -16,7 +16,7 @@ class ItemsTableSeeder extends Seeder
     {
         Item::create([
             'id' => '1',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '1',
             'condition_id' => '1',
             'name' => 'ダメージジーンズ',
@@ -27,7 +27,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '2',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '2',
             'condition_id' => '3',
             'name' => 'キックボード',
@@ -38,7 +38,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '3',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '3',
             'condition_id' => '5',
             'name' => '任天堂DS',
@@ -49,7 +49,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '4',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '4',
             'condition_id' => '4',
             'name' => 'ワンピース100巻',
@@ -60,7 +60,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '5',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '5',
             'condition_id' => '2',
             'name' => '冷蔵庫',
@@ -71,7 +71,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '6',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '6',
             'condition_id' => '1',
             'name' => '大谷翔平 日米通算100本塁打記念バット',
@@ -82,7 +82,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '7',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '7',
             'condition_id' => '1',
             'name' => 'COACH 香水',
@@ -93,7 +93,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '8',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '8',
             'condition_id' => '4',
             'name' => 'パイプ椅子',
@@ -104,7 +104,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '9',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '9',
             'condition_id' => '1',
             'name' => 'プロテイン',
@@ -115,7 +115,7 @@ class ItemsTableSeeder extends Seeder
 
         Item::create([
             'id' => '10',
-            'user_id' => '1',
+            'user_id' => '2',
             'category_id' => '10',
             'condition_id' => '3',
             'name' => 'GPS発信機能付き首輪',

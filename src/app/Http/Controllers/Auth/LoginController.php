@@ -60,9 +60,14 @@ class LoginController extends Controller
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
 
-            Log::info('Login successful for user: ' . Auth::user()->email);
+            $user = Auth::user();
+            Log::info('Login successful for user: ' . $user->email);
 
-            return redirect('/');
+            if ($user->authority == 0) {
+                return redirect('/manager');
+            } elseif ($user->authority == 1) {
+                return redirect('/');
+            }
         }
 
         // 認証失敗時の処理

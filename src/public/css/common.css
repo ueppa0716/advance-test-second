@@ -85,6 +85,24 @@ img {
     font-size: 1.5vw;
 }
 
+.search-form {
+    width: 100%;
+    grid-column: 4/7;
+    justify-self: center;
+    align-self: center;
+}
+
+.search-form__keyword {
+    width: 28vw;
+    height: 35px;
+}
+
+.search-form-btn {
+    width: 4vw;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
 @media (max-width: 768px) {}
 
 /* フッター */
