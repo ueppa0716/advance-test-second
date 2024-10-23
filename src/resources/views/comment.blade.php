@@ -37,40 +37,98 @@
         <div class="comment-group">
             @if (isset($commentInfos))
             @foreach ($commentInfos as $commentInfo)
-            @if ($commentInfo->user_id === $itemInfo->user_id)
+
+            @if ($commentInfo->user_id === $itemInfo->user_id && $commentInfo->status == 1)
             <div class="comment-group__myself">
                 <div class="comment-group__myInfo">
-                    @if ($commentInfo->user_id === $user->id || $user->authority == 0)
+
+                    {{-- コメント削除フォーム (statusが1のとき) --}}
+                    @if (($commentInfo->user_id === $user->id || $user->authority == 0) && $commentInfo->status == 1)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
                         <input class="comment-delete__btn" type="submit" value="コメント削除" name="delete">
                         <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
                     </form>
                     @endif
+
+                    {{-- アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) --}}
+                    @if ($user->authority == 0 && $commentInfo->status == 0)
+                    <form class="" method="post" action="/comment/delete">
+                        @csrf
+                        <input class="comment-delete__btn" type="submit" value="アクティブに戻す" name="reset">
+                        <input class="comment-delete__btn" type="submit" value="完全に削除" name="eliminate">
+                        <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
+                    </form>
+                    @endif
+
                     <p class="comment-group-text">{{ $commentInfo->user->name }}</p>
                     <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
                 </div>
                 <p class="comment-group-time">{{ $commentInfo->created_at->format('Y/m/d') }}</p>
                 <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
             </div>
-            @else
+            @elseif ($commentInfo->user_id !== $itemInfo->user_id && $commentInfo->status == 1)
             <div class="comment-group__other">
                 <div class="comment-group__otherInfo">
                     <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
                     <p class="comment-group-text">{{ $commentInfo->user->name }}</p>
-                    @if ($commentInfo->user_id === $user->id || $user->authority == 0)
+
+                    {{-- コメント削除フォーム (statusが1のとき) --}}
+                    @if (($commentInfo->user_id === $user->id || $user->authority == 0) && $commentInfo->status == 1)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
                         <input class="comment-delete__btn" type="submit" value="コメント削除" name="delete">
                         <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
                     </form>
                     @endif
+
+                    {{-- アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) --}}
+                    @if ($user->authority == 0 && $commentInfo->status == 0)
+                    <form class="" method="post" action="/comment/delete">
+                        @csrf
+                        <input class="comment-delete__btn" type="submit" value="アクティブに戻す" name="reset">
+                        <input class="comment-delete__btn" type="submit" value="完全に削除" name="eliminate">
+                        <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
+                    </form>
+                    @endif
                 </div>
                 <p class="comment-group-time">{{ $commentInfo->created_at->format('Y/m/d') }}</p>
                 <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
-                <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
+            </div>
+            @elseif ($user->authority == 0 && $commentInfo->status == 0)
+            @if ($commentInfo->user_id === $itemInfo->user_id)
+            <div class="comment-group__myself">
+                <div class="comment-group__myInfo">
+                    <form class="" method="post" action="/comment/delete">
+                        @csrf
+                        <input class="comment-delete__btn" type="submit" value="アクティブに戻す" name="reset">
+                        <input class="comment-delete__btn" type="submit" value="完全に削除" name="eliminate">
+                        <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
+                    </form>
+                    <p class="comment-group-text">{{ $commentInfo->user->name }}</p>
+                    <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
+                </div>
+                <p class="comment-group-time">{{ $commentInfo->created_at->format('Y/m/d') }}</p>
+                <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
+            </div>
+            @elseif ($commentInfo->user_id !== $itemInfo->user_id)
+            <div class="comment-group__other">
+                <div class="comment-group__otherInfo">
+                    <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
+                    <p class="comment-group-text">{{ $commentInfo->user->name }}</p>
+                    <form class="" method="post" action="/comment/delete">
+                        @csrf
+                        <input class="comment-delete__btn" type="submit" value="アクティブに戻す" name="reset">
+                        <input class="comment-delete__btn" type="submit" value="完全に削除" name="eliminate">
+                        <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
+                    </form>
+                </div>
+                <p class="comment-group-time">{{ $commentInfo->created_at->format('Y/m/d') }}</p>
+                <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
             </div>
             @endif
+            @endif
+
             @endforeach
             @endif
         </div>

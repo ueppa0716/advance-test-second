@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\MailRequest;
 use App\Models\Like;
 use App\Models\Item;
 use App\Models\User;
@@ -22,6 +22,7 @@ class ManagerController extends Controller
     {
         $user = Auth::user();
         $userInfos = User::where('authority', 1)
+            ->where('status', 1)
             ->paginate(10);
 
         return view('manager', compact('user', 'userInfos'));
@@ -29,8 +30,11 @@ class ManagerController extends Controller
 
     public function userDelete(Request $request)
     {
-        User::where('id', $request->user_id)->delete();
-        return redirect()->back()->with('success', 'ユーザーを削除しました');
+        User::where('id', $request->user_id)
+            ->update([
+                'status' => 0,
+            ]);
+        return redirect()->back()->with('success', 'ユーザーをアカウント停止にしました');
     }
 
     public function mail(Request $request)
@@ -40,7 +44,7 @@ class ManagerController extends Controller
         return view('emails.mail', compact('user'));
     }
 
-    public function send(Request $request)
+    public function send(MailRequest $request)
     {
         $request->validate([
             'subject' => 'required|string|max:255',
@@ -56,5 +60,30 @@ class ManagerController extends Controller
         }
 
         return redirect()->back()->with('success', 'メールの送信が完了しました');
+    }
+
+    public function userDeleteList(Request $request)
+    {
+        $user = Auth::user();
+        $userInfos = User::where('authority', 1)
+            ->where('status', 0)
+            ->paginate(10);
+
+        return view('userDeleteList', compact('user', 'userInfos'));
+    }
+
+    public function userEliminate(Request $request)
+    {
+        if ($request->has('eliminate')) {
+            User::where('id', $request->user_id)->delete();
+            return redirect()->back()->with('success', 'ユーザーを完全に削除しました');
+        }
+        if ($request->has('reset')) {
+            User::where('id', $request->user_id)
+                ->update([
+                    'status' => 1,
+                ]);
+            return redirect()->back()->with('success', 'ユーザーをアクティブ状態に戻しました');
+        }
     }
 }

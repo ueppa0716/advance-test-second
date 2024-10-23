@@ -9,6 +9,7 @@
     <div class="manager-heading">
         <h1 class="manager-heading__title">管理者ページへようこそ</h1>
         <h2 class="manager-heading__text">ユーザー 一覧</h2>
+        <span class="manager-heading__link"><a class="manager-heading__message" href="/manager/list">アカウント停止ユーザー 一覧へ</a></span>
     </div>
     <table class="user__table">
         <tr class="user__row">
@@ -26,7 +27,7 @@
             <th class="user-label">
                 <form class="" method="post" action="/manager/user/delete">
                     @csrf
-                    <input class="user-delete-btn" type="submit" value="削除する" name="delete">
+                    <input class="user-delete-btn" type="submit" value="アカウント停止する" name="delete">
                     <input type="hidden" name="user_id" value="{{ $userInfo->id }}">
                 </form>
             </th>

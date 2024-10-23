@@ -29,7 +29,9 @@ class CommentController extends Controller
             ->get();
 
         $likeCount = Like::where('item_id', $item_id)->count();
-        $commentCount = Comment::where('item_id', $item_id)->count();
+        $commentCount = Comment::where('item_id', $item_id)
+            ->where('status', 1)
+            ->count();
 
         return view('comment', compact('user', 'itemInfo', 'likeCount', 'commentCount', 'commentInfos'));
     }
@@ -41,13 +43,31 @@ class CommentController extends Controller
             'user_id' => $user->id,
             'item_id' => $request->item_id,
             'comment' => $request->comment,
+            'status' => 1,
         ]);
         return redirect()->back();
     }
 
     public function delete(Request $request)
     {
-        Comment::where('id', $request->comment_id)->delete();
-        return redirect()->back();
+        if ($request->has('delete')) {
+            Comment::where('id', $request->comment_id)
+                ->update([
+                    'status' => 0,
+                ]);
+            return redirect()->back();
+        }
+        if ($request->has('reset')) {
+            Comment::where('id', $request->comment_id)
+                ->update([
+                    'status' => 1,
+                ]);
+            return redirect()->back();
+        }
+        if ($request->has('eliminate')) {
+            Comment::where('id', $request->comment_id)
+                ->delete();
+            return redirect()->back();
+        }
     }
 }

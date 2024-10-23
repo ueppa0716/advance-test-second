@@ -60,6 +60,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/manager/user/delete', [ManagerController::class, 'userDelete']);
     Route::get('/manager/mail', [ManagerController::class, 'mail']);
     Route::post('/manager/mail/send', [ManagerController::class, 'send']);
+    Route::get('/manager/list', [ManagerController::class, 'userDeleteList']);
+    Route::post('/manager/user/eliminate', [ManagerController::class, 'userEliminate']);
 
     Route::get('/profile', function () {
         // 確認済みのユーザーのみがこのルートにアクセス可能

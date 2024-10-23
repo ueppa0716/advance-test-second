@@ -34,8 +34,10 @@
                 <p class="count-comment">{{ $commentCount }}</p>
             </div>
         </div>
+        @if (empty($itemInfo->purchased))
         <span class="detail-purchase-btn"><a class="detail-purchase__text"
                 href="/purchase/{{ $itemInfo->id }}">購入する</a></span>
+        @endif
         <p class="detail-item__title">商品説明</p>
         <p class="detail-item__detail">{{ $itemInfo->detail }}</p>
         <p class="detail-item__title">商品の情報</p>

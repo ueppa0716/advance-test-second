@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -56,6 +57,18 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        // 認証試行前にユーザーステータスを確認
+        $user = User::where('email', $validated['email'])->first();
+
+        if (
+            $user && $user->status == 0
+        ) {
+            Log::warning('Login attempt by inactive user: ' . $user->email);
+            return back()->withErrors([
+                'email' => 'アカウントが停止されています',
+            ]);
+        }
+
         // 認証試行
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
@@ -63,9 +76,11 @@ class LoginController extends Controller
             $user = Auth::user();
             Log::info('Login successful for user: ' . $user->email);
 
-            if ($user->authority == 0) {
+            if (
+                $user->authority == 0
+            ) {
                 return redirect('/manager');
-            } elseif ($user->authority == 1) {
+            } elseif ($user->authority == 1 && $user->status == 1) {
                 return redirect('/');
             }
         }

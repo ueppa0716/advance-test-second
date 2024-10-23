@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('building')->nullable();
             $table->string('photo')->nullable();
             $table->integer('authority');
+            $table->integer('status');
             $table->rememberToken();
             $table->timestamps();
         });

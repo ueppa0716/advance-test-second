@@ -41,6 +41,7 @@
             <div class="address-form__group">
                 <p class="address-form__text">支払い方法</p>
                 <select class="detail-group__method" name="payment_id">
+                    <option value="" {{ is_null($userInfo['payment_id']) ? 'selected' : '' }}>選択してください</option>
                     @foreach ($payments as $payment)
                     <option value="{{ $payment->id }}"
                         {{ (request('payment') == $payment->id || $userInfo['payment_id'] == $payment->id) ? 'selected' : '' }}>

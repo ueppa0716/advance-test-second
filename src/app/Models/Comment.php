@@ -14,6 +14,7 @@ class Comment extends Model
         'user_id',
         'item_id',
         'comment',
+        'status',
     ];
 
     public function item()

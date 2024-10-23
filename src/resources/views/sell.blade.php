@@ -18,7 +18,7 @@
             </p>
             <div class="sell__info">
                 <div class="sell__btn">
-                    <label for="photo">画像を選択する</label>
+                    <label for="photo">画像を選択する(※jpg, jpeg, png, gif形式、2MB以下)</label>
                     <input type="file" id="photo" name="photo" accept="image/*">
                 </div>
             </div>
@@ -26,6 +26,7 @@
                 <p class="sell-form__title">商品の詳細</p>
                 <p class="sell-form__text">カテゴリー</p>
                 <select class="sell-form-select" name="category">
+                    <option value="">選択してください</option>
                     @foreach ($categories as $category)
                     <option value="{{ $category->id }}"
                         {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -40,6 +41,7 @@
                 </p>
                 <p class="sell-form__text">商品の状態</p>
                 <select class="sell-form-select" name="condition">
+                    <option value="">選択してください</option>
                     @foreach ($conditions as $condition)
                     <option value="{{ $condition->id }}"
                         {{ request('condition') == $condition->id ? 'selected' : '' }}>

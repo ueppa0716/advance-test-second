@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
             'name' => 'required|string|max:191',
             'post_code' => 'numeric|digits:7',
             'address' => 'required',
-            'photo' => 'required',
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // 1MB=1024KB
         ];
     }
 
@@ -41,6 +41,9 @@ class ProfileRequest extends FormRequest
             'post_code.digits' => '郵便番号はハイフン抜き7桁で入力してください。',
             'address.required' => '住所を入力してください',
             'photo.required' => '写真を選択してください',
+            'photo.image' => '写真は画像ファイルである必要があります。',
+            'photo.mimes' => '写真はjpg, jpeg, png, gif形式のファイルを選択してください。',
+            'photo.max' => '写真のサイズは2MB以下である必要があります。',
         ];
     }
 }

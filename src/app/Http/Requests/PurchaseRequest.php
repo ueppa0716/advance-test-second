@@ -26,6 +26,7 @@ class PurchaseRequest extends FormRequest
         return [
             'post_code' => 'numeric|digits:7',
             'address' => 'required',
+            'payment_id' => 'numeric',
         ];
     }
 
@@ -35,6 +36,7 @@ class PurchaseRequest extends FormRequest
             'post_code.numeric' => '郵便番号は数値で入力してください。',
             'post_code.digits' => '郵便番号はハイフン抜き7桁で入力してください。',
             'address.required' => '住所を入力してください',
+            'payment_id.numeric' => '支払い方法を選択してください',
         ];
     }
 }

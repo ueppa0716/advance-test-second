@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Like;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Purchase;
 use App\Models\Condition;
 use App\Models\Category;
 use App\Models\Comment;
@@ -21,10 +22,12 @@ class ItemController extends Controller
         $conditions = Condition::all();
         $categories = Category::all();
 
-        $itemInfos = $query->with(['condition', 'category'])->get();
-
         $query = $this->getSearchQuery($request, $query);
         $itemInfos = $query->with(['condition', 'category'])->get();
+
+        foreach ($itemInfos as $itemInfo) {
+            $itemInfo->purchased = Purchase::where('item_id', $itemInfo->id)->exists();
+        }
 
         return view('item', compact('user', 'itemInfos', 'conditions', 'categories'));
     }
@@ -59,10 +62,13 @@ class ItemController extends Controller
         }
 
         $itemInfo->liked = $userLikes->contains('item_id', $itemInfo->id);
+        $itemInfo->purchased = Purchase::where('item_id', $itemInfo->id)->exists();
 
         $likeCount = Like::where('item_id', $item_id)->count();
 
-        $commentCount = Comment::where('item_id', $item_id)->count();
+        $commentCount = Comment::where('item_id', $item_id)
+            ->where('status', 1)
+            ->count();
 
         return view('detail', compact('user', 'itemInfo', 'likeCount', 'commentCount'));
     }
@@ -84,6 +90,10 @@ class ItemController extends Controller
             $itemInfos = $query->with(['condition', 'category'])->get();
         } else {
             $itemInfos = collect();
+        }
+
+        foreach ($itemInfos as $itemInfo) {
+            $itemInfo->purchased = Purchase::where('item_id', $itemInfo->id)->exists();
         }
 
         return view('mylist', compact('user', 'itemInfos', 'conditions', 'categories'));

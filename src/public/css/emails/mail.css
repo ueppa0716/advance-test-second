@@ -5,7 +5,7 @@
 .mail-form {
     background-color: #FFF;
     width: 50vw;
-    height: 400px;
+    height: 410px;
     border: 1px solid black;
     border-radius: 8px;
     box-shadow: 2px 2px 1px gray;
@@ -109,11 +109,12 @@
 }
 
 .mail-form__error-message {
-    display: flex;
+    display: block;
     color: red;
     font-size: 15px;
     font-weight: bold;
-    align-items: center;
+    text-align: center;
+    margin: 0;
 }
 
 @media (max-width: 768px) {

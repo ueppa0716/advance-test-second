@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'manager@gmail.com',
             'password' => Hash::make('password'),
             'authority' => 0,
+            'status' => 1,
         ]);
 
         User::create([
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'test@gmail.com',
             'password' => Hash::make('password'),
             'authority' => 1,
+            'status' => 1,
         ]);
     }
 }

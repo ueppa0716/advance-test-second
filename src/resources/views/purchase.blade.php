@@ -23,13 +23,13 @@
                     @csrf
                     <input class="detail-address-btn" type="submit" value="変更する" name="change">
                     <input type="hidden" name="item_id" value="{{ $itemInfo->id }}">
-                    <input type="hidden" name="payment_id" value="{{ $payments->firstWhere('id', $newInfo['payment_id']) ?? $payments->firstWhere('id', 1) }}">
+                    <input type="hidden" name="payment_id" value="{{ $payments->firstWhere('id', $newInfo['payment_id']) ?? '選択してください' }}">
                     <input type="hidden" name="post_code" value="{{ $newInfo['post_code'] ?? $user->post_code }}">
                     <input type="hidden" name="address" value="{{ $newInfo['address'] ?? $user->address }}">
                     <input type="hidden" name="building" value="{{ $newInfo['building'] ?? $user->building }}">
                 </form>
             </div>
-            <p class="detail-group__method">{{ $payments->firstWhere('id', $newInfo['payment_id'])->payment ?? $payments->firstWhere('id', 1)->payment }}</p>
+            <p class="detail-group__method">{{ $payments->firstWhere('id', $newInfo['payment_id'])->payment ?? '選択してください' }}</p>
         </div>
         <div class="detail-address">
             <div class="detail-group__address">
@@ -38,7 +38,7 @@
                     @csrf
                     <input class="detail-address-btn" type="submit" value="変更する" name="change">
                     <input type="hidden" name="item_id" value="{{ $itemInfo->id }}">
-                    <input type="hidden" name="payment_id" value="{{ $payments->firstWhere('id', $newInfo['payment_id']) ?? $payments->firstWhere('id', 1) }}">
+                    <input type="hidden" name="payment_id" value="{{ $payments->firstWhere('id', $newInfo['payment_id']) ?? '選択してください' }}">
                     <input type="hidden" name="post_code" value="{{ $newInfo['post_code'] ?? $user->post_code }}">
                     <input type="hidden" name="address" value="{{ $newInfo['address'] ?? $user->address }}">
                     <input type="hidden" name="building" value="{{ $newInfo['building'] ?? $user->building }}">
@@ -89,7 +89,7 @@
             @csrf
             <input class="purchase-group-btn" type="submit" value="購入内容確認ページへ" name="purchase">
             <input type="hidden" name="item_id" value="{{ $itemInfo->id }}">
-            <input type="hidden" name="payment_id" value="{{ $newInfo['payment_id'] ?? $payments->firstWhere('id', 1)->id }}">
+            <input type="hidden" name="payment_id" value="{{ $newInfo['payment_id'] ?? '選択してください' }}">
             <input type="hidden" name="post_code" value="{{ $newInfo['post_code'] ?? $user->post_code }}">
             <input type="hidden" name="address" value="{{ $newInfo['address'] ??  $user->address }}">
             <input type="hidden" name="building" value="{{ $newInfo['building'] ?? $user->building }}">

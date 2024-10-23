@@ -93,12 +93,13 @@ img {
 }
 
 .search-form__keyword {
-    width: 28vw;
+    width: 26vw;
     height: 35px;
 }
 
 .search-form-btn {
-    width: 4vw;
+    width: 4.5vw;
+    height: 35px;
     font-size: 1.3vw;
     text-align: center;
 }

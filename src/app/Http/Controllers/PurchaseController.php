@@ -76,14 +76,6 @@ class PurchaseController extends Controller
     {
         $user = Auth::user();
 
-        $existingPurchase = Purchase::where('user_id', $user->id)
-            ->where('item_id', $request->item_id)
-            ->first();
-
-        if ($existingPurchase) {
-            return redirect()->route('mypagePurchase')->with('error', 'すでに購入済です。');
-        }
-
         Purchase::create([
             'user_id' => $user->id,
             'item_id' => $request->item_id,
@@ -99,14 +91,6 @@ class PurchaseController extends Controller
     public function charge(PurchaseRequest $request)
     {
         $user = Auth::user();
-
-        $existingPurchase = Purchase::where('user_id', $user->id)
-            ->where('item_id', $request->item_id)
-            ->first();
-
-        if ($existingPurchase) {
-            return redirect()->route('mypagePurchase')->with('error', 'すでに購入済です。');
-        }
 
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));

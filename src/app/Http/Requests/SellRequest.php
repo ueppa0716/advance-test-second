@@ -28,8 +28,8 @@ class SellRequest extends FormRequest
             'detail' => 'required|string|max:191',
             'category' => 'required',
             'condition' => 'required',
-            'price' => 'numeric|required',
-            'photo' => 'required',
+            'price' => 'integer|required|min:0',
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // 1MB=1024KB
         ];
     }
 
@@ -44,9 +44,13 @@ class SellRequest extends FormRequest
             'detail.max' => '商品説明を191文字以下で入力してください',
             'category.required' => 'カテゴリーを選択してください',
             'condition.required' => '商品状態を選択してください',
-            'price.numeric' => '価格は数値で入力してください。',
+            'price.integer' => '価格は整数で入力してください',
+            'price.min' => '価格は0以上の値を入力してください',
             'price.required' => '価格を入力してください',
             'photo.required' => '写真を選択してください',
+            'photo.image' => '写真は画像ファイルである必要があります。',
+            'photo.mimes' => '写真はjpg, jpeg, png, gif形式のファイルを選択してください。',
+            'photo.max' => '写真のサイズは2MB以下である必要があります。',
         ];
     }
 }

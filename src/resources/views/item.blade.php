@@ -19,6 +19,11 @@
         <div class="item-group">
             <a href="/item/{{ $itemInfo->id }}" class="detail-btn"><img src="{{ $itemInfo->photo }}"
                     alt="" class="item-img"></a>
+            @if ($itemInfo->purchased)
+            <ul class="item-group__info--purchased">
+                <li class="item-group-text--purchased">購入済</li>
+            </ul>
+            @endif
             <ul class="item-group__info">
                 <li class="item-group-text">{{ $itemInfo->name }}</li>
                 <li class="item-group-text">¥{{ number_format($itemInfo->price) }}</li>
