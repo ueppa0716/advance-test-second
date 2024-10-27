@@ -42,6 +42,10 @@
     text-decoration: none;
 }
 
+.user-delete-btn {
+    font-size: 1.2vw;
+}
+
 /* テーブル */
 .user__table {
     display: flex;

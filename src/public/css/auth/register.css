@@ -12,12 +12,6 @@
     border-radius: 8px;
 }
 
-@media screen and (max-width: 1200px) {
-    .register-form__form {
-        width: 60vw;
-    }
-}
-
 .register-form__group {
     margin-bottom: 32px;
 }
@@ -75,15 +69,4 @@
 
 .register-form__nav-link {
     text-decoration: none;
-}
-
-@media (max-width: 768px) {
-    .register-form {
-        width: 70vw;
-    }
-
-    .register-form__btn {
-        width: 10vw;
-        font-size: 2.0vw;
-    }
 }

@@ -25,12 +25,6 @@
     padding: 25px;
 }
 
-@media screen and (max-width: 1200px) {
-    .mail-form__form {
-        width: 100%;
-    }
-}
-
 .mail-form__group {
     margin-bottom: 15px;
     display: flex;
@@ -115,15 +109,4 @@
     font-weight: bold;
     text-align: center;
     margin: 0;
-}
-
-@media (max-width: 768px) {
-    .mail-form {
-        width: 70vw;
-    }
-
-    .mail-form-btn {
-        width: 10vw;
-        font-size: 2.0vw;
-    }
 }

@@ -76,6 +76,10 @@
     align-self: center;
 }
 
+.user-delete-btn {
+    font-size: 1.2vw;
+}
+
 .user__delete__success-message {
     color: blue;
     font-size: 1.5vw;

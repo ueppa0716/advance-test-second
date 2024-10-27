@@ -92,3 +92,43 @@ php artisan db:seed
 ```bash
 php artisan storage:link
 ```
+
+**PHPUnit テスト**
+※アカウント停止ユーザーのログイン不可について確認可能
+1. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
+2. .env に以下の環境変数を追加
+
+```text
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_test_db
+DB_USERNAME=test_user
+DB_PASSWORD=test_password
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=array
+FILESYSTEM_DRIVER=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=array
+SESSION_LIFETIME=120
+```
+
+3. phpunit.xml でテスト用のデータベースを設定する
+
+```text
+<php>
+    <server name="APP_ENV" value="testing"/>
+    <server name="BCRYPT_ROUNDS" value="4"/>
+    <server name="CACHE_DRIVER" value="array"/>
+    <server name="DB_CONNECTION" value="sqlite"/>
+    <server name="DB_DATABASE" value=":memory:"/>
+    <server name="MAIL_MAILER" value="array"/>
+    <server name="QUEUE_CONNECTION" value="sync"/>
+    <server name="SESSION_DRIVER" value="array"/>
+    <server name="TELESCOPE_ENABLED" value="false"/>
+</php>
+```
+
+4. テストの実行
+php artisan test --env=testing --filter=LoginControllerTest

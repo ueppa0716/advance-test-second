@@ -2,24 +2,6 @@
     padding: 30px;
 }
 
-.search-form {
-    width: 100%;
-    grid-column: 4/7;
-    justify-self: center;
-    align-self: center;
-}
-
-.search-form__keyword {
-    width: 28vw;
-    height: 35px;
-}
-
-.search-form-btn {
-    width: 4vw;
-    font-size: 1.3vw;
-    text-align: center;
-}
-
 .address-form__inner {
     display: block;
     margin-top: 48px;
@@ -28,12 +10,6 @@
 .address-form__form {
     width: 40vw;
     border-radius: 8px;
-}
-
-@media screen and (max-width: 1200px) {
-    .address-form__form {
-        width: 60vw;
-    }
 }
 
 .address-form__group {
@@ -101,15 +77,4 @@
 
 .error-message__text {
     font-size: 1.2vw;
-}
-
-@media (max-width: 768px) {
-    .address-form {
-        width: 70vw;
-    }
-
-    .address-form__btn {
-        width: 10vw;
-        font-size: 2.0vw;
-    }
 }
