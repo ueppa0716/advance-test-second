@@ -21,6 +21,7 @@
             </form>
             <nav class="header__link-nav--first">
                 @if (Auth::check())
+                <!-- ログイン状態 -->
                 <ul class="header__link-ul">
                     <form action="/logout" method="post">
                         @csrf
@@ -28,6 +29,7 @@
                     </form>
                 </ul>
                 @else
+                <!-- 未ログイン -->
                 <ul class="header__link-ul">
                     <li class="header__link-li"><a class="header__link-text" href="/login">ログイン</a></li>
                 </ul>
@@ -36,15 +38,18 @@
             <nav class="header__link-nav--second">
                 @if (Auth::check())
                 @if (isset($user) && $user->authority == 0)
+                <!-- 管理者 -->
                 <ul class="header__link-ul">
                     <li class="header__link-li"><a class="header__link-text" href="/manager">管理者ページ</a></li>
                 </ul>
                 @else
+                <!-- 会員 -->
                 <ul class="header__link-ul">
                     <li class="header__link-li"><a class="header__link-text" href="/mypage/sell">マイページ</a></li>
                 </ul>
                 @endif
                 @else
+                <!-- 未ログイン -->
                 <ul class="header__link-ul">
                     <li class="header__link-li"><a class="header__link-text" href="/register">会員登録</a></li>
                 </ul>
@@ -53,8 +58,10 @@
             <nav class="header__link-nav--third">
                 <ul class="header__link-ul">
                     @if (isset($user) && $user->authority == 0)
+                    <!-- 管理者 -->
                     <li class="header__link-li"><a class="header__link-btn" href="/manager/mail">メール</a></li>
                     @elseif (isset($user) && $user->authority == 1)
+                    <!-- 会員 -->
                     <li class="header__link-li"><a class="header__link-btn" href="/sell">出品</a></li>
                     @endif
                 </ul>

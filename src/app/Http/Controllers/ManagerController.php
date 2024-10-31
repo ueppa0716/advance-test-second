@@ -4,15 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\MailRequest;
-use App\Models\Like;
-use App\Models\Item;
 use App\Models\User;
-use App\Models\Condition;
-use App\Models\Category;
-use App\Models\Comment;
-use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use App\Mail\ManagerEmail;
 use Illuminate\Support\Facades\Mail;
 

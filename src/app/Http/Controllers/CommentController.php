@@ -7,9 +7,6 @@ use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Like;
 use App\Models\Item;
-use App\Models\User;
-use App\Models\Condition;
-use App\Models\Category;
 use App\Models\Comment;
 
 class CommentController extends Controller

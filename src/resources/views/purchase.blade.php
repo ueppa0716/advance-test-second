@@ -82,7 +82,7 @@
             </tr>
             <tr class="purchase-table__row">
                 <th class="purchase-table__th">支払い方法</th>
-                <td class="purchase-table__td">{{ $payments->firstWhere('id', $newInfo['payment_id'])->payment ?? $payments->firstWhere('id', 1)->payment }}</td>
+                <td class="purchase-table__td">{{ $payments->firstWhere('id', $newInfo['payment_id'])->payment ?? '選択してください' }}</td>
             </tr>
         </table>
         <form class="purchase-group" method="post" action="/purchase/confirm/{{ $itemInfo->id }}">

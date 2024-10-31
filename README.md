@@ -43,7 +43,11 @@
 
 # テーブル設計
 
+![alt text](image-1.png)
+
 # ER 図
+
+![alt text](image.png)
 
 # 環境構築
 
@@ -95,6 +99,7 @@ php artisan storage:link
 
 **PHPUnit テスト**
 ※アカウント停止ユーザーのログイン不可について確認可能
+
 1. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
 2. .env に以下の環境変数を追加
 
@@ -131,4 +136,4 @@ SESSION_LIFETIME=120
 ```
 
 4. テストの実行
-php artisan test --env=testing --filter=LoginControllerTest
+   php artisan test --env=testing --filter=LoginControllerTest

@@ -39,10 +39,10 @@
             @foreach ($commentInfos as $commentInfo)
 
             @if ($commentInfo->user_id === $itemInfo->user_id && $commentInfo->status == 1)
+            <!-- 出品者の場合 -->
             <div class="comment-group__myself">
                 <div class="comment-group__myInfo">
-
-                    {{-- コメント削除フォーム (statusが1のとき) --}}
+                    <!--コメント削除フォーム (statusが1のとき)  -->
                     @if (($commentInfo->user_id === $user->id || $user->authority == 0) && $commentInfo->status == 1)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
@@ -50,8 +50,7 @@
                         <input type="hidden" name="comment_id" value="{{ $commentInfo->id }}">
                     </form>
                     @endif
-
-                    {{-- アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) --}}
+                    <!--アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) -->
                     @if ($user->authority == 0 && $commentInfo->status == 0)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
@@ -68,12 +67,13 @@
                 <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
             </div>
             @elseif ($commentInfo->user_id !== $itemInfo->user_id && $commentInfo->status == 1)
+            <!-- 出品者でない場合 -->
             <div class="comment-group__other">
                 <div class="comment-group__otherInfo">
                     <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
                     <p class="comment-group-text">{{ $commentInfo->user->name }}</p>
 
-                    {{-- コメント削除フォーム (statusが1のとき) --}}
+                    <!--コメント削除フォーム (statusが1のとき)  -->
                     @if (($commentInfo->user_id === $user->id || $user->authority == 0) && $commentInfo->status == 1)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
@@ -82,7 +82,7 @@
                     </form>
                     @endif
 
-                    {{-- アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) --}}
+                    <!--アクティブに戻す/完全削除 (statusが0のとき, authorityが0のとき) -->
                     @if ($user->authority == 0 && $commentInfo->status == 0)
                     <form class="" method="post" action="/comment/delete">
                         @csrf
@@ -97,6 +97,7 @@
             </div>
             @elseif ($user->authority == 0 && $commentInfo->status == 0)
             @if ($commentInfo->user_id === $itemInfo->user_id)
+            <!-- 出品者の場合 -->
             <div class="comment-group__myself">
                 <div class="comment-group__myInfo">
                     <form class="" method="post" action="/comment/delete">
@@ -112,6 +113,7 @@
                 <p class="comment-group__comment">{{ $commentInfo->comment }}</p>
             </div>
             @elseif ($commentInfo->user_id !== $itemInfo->user_id)
+            <!-- 出品者でない場合 -->
             <div class="comment-group__other">
                 <div class="comment-group__otherInfo">
                     <img src="{{ $commentInfo->user->photo }}" alt="User Photo" class="comment-group-img">
